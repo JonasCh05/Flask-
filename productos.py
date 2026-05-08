@@ -8,3 +8,9 @@ productos = [
 
 def listar_productos():
     return jsonify(productos)
+
+def obtener_producto_por_id(id):
+    for producto in productos:
+        if producto["id"] == id:
+            return producto
+    return None

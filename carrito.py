@@ -5,19 +5,19 @@ carrito = []
 def ver_carrito():
     return jsonify(carrito)
 
-def agregar_producto():
-    
-    producto = {
-        "id": 1,
-        "nombre": "Jean",
-        "precio": 20000
-    }
+def agregar_producto(id):
 
-    carrito.append(producto)
+    producto = obtener_producto_por_id(id)
+
+    if producto:
+        carrito.append(producto)
+        return jsonify({
+            "mensaje": "Producto agregado",
+            "carrito": carrito
+        })
 
     return jsonify({
-        "mensaje": "Producto agregado",
-        "carrito": carrito
+        "mensaje": "Producto no encontrado"
     })
 
 def eliminar_producto(id):
